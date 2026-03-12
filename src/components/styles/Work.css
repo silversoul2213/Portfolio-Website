@@ -82,8 +82,34 @@
   margin: 0;
   margin-top: 3px;
 }
-.work-info > p {
+.work-info > p,
+.work-info > .work-description {
   width: 90%;
+}
+
+.work-description {
+  font-weight: 200;
+  color: #adacac;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.work-description ul.project-features {
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.work-description ul.project-features li {
+  list-style-type: square;
+}
+
+.work-description strong {
+  color: var(--accentColor, #fff);
+  font-weight: 500;
 }
 .work-image {
   display: flex;

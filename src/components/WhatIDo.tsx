@@ -89,7 +89,7 @@ const WhatIDo = () => {
             <div className="what-content-in">
               <h3>DEVELOPMENT</h3>
               <p>
-                Building production AI systems, reliable backends, and real-time pipelines.
+                Architecting scalable AI backends, low-latency inference pipelines, and end-to-end MLOps systems for real-world production
               </p>
               <h5>Tech Stack</h5>
               <div className="what-content-flex">
@@ -99,6 +99,8 @@ const WhatIDo = () => {
                 <div className="what-tags">pgvector</div>
                 <div className="what-tags">Celery</div>
                 <div className="what-tags">Docker</div>
+                <div className="what-tags">GitHub Actions</div>
+                <div className="what-tags">CI/CD</div>
                 <div className="what-tags">WebSockets</div>
                 <div className="what-tags">OAuth</div>
               </div>
@@ -126,7 +128,7 @@ const WhatIDo = () => {
             <div className="what-content-in">
               <h3>RESEARCH</h3>
               <p>
-                Applied ML: efficient training, interpretability, and deployable models.
+                Advancing applied machine learning through parameter-efficient fine-tuning (PEFT), robust model interpretability (XAI), and systematic optimization.
               </p>
               <h5>Tech Stack</h5>
               <div className="what-content-flex">
@@ -137,6 +139,8 @@ const WhatIDo = () => {
                 <div className="what-tags">OpenCV</div>
                 <div className="what-tags">MLflow</div>
                 <div className="what-tags">TensorFlow</div>
+                <div className="what-tags">Captum</div>
+                <div className="what-tags">SHAP</div>
               </div>
               <div className="what-arrow"></div>
             </div>

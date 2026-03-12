@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, useTexture } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
@@ -11,20 +11,26 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+const aiStackLogos = [
+  "/images/pytorch.png",
+  "/images/scikit-learn.png",
+  "/images/hugging-face.png",
+  "/images/tensorflow.png",
+  "/images/mlflow.png",
+  "/images/lora.png",
+  "/images/claude.png",
+  "/images/fastapi.png",
+  "/images/postgresql.png",
+  "/images/redis.png",
+  "/images/supabase.png",
+  "/images/docker.png",
+  "/images/github.png",
+  "/images/github-actions.png",
+  "/images/python.png",
+  "/images/opencv.png"
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
 
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
 
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
@@ -34,7 +40,7 @@ type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
+  material: THREE.Material;
   isActive: boolean;
 };
 
@@ -91,6 +97,45 @@ function SphereGeo({
   );
 }
 
+function TechSpheres({ isActive }: { isActive: boolean }) {
+  const textures = useTexture(aiStackLogos);
+
+  const materials = useMemo(() => {
+    return textures.map((texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      // Prevent wrapping artifacts
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(1, 1);
+      
+      return new THREE.MeshPhysicalMaterial({
+        map: texture,
+        metalness: 0.1,
+        roughness: 0.15,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.1,
+        envMapIntensity: 2.0,
+        emissive: "#ffffff",
+        emissiveMap: texture,
+        emissiveIntensity: 0.1,
+      });
+    });
+  }, [textures]);
+
+  return (
+    <>
+      {spheres.map((props, i) => (
+        <SphereGeo
+          key={i}
+          {...props}
+          material={materials[Math.floor(Math.random() * materials.length)]}
+          isActive={isActive}
+        />
+      ))}
+    </>
+  );
+}
+
 type PointerProps = {
   vec?: THREE.Vector3;
   isActive: boolean;
@@ -131,10 +176,10 @@ const TechStack = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
+        .getElementById("work")?.getBoundingClientRect().top || 0;
       setIsActive(scrollY > threshold);
     };
+
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       element.addEventListener("click", () => {
@@ -146,29 +191,16 @@ const TechStack = () => {
         }, 1000);
       });
     });
+    
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const materials = useMemo(() => {
-    return textures.map(
-      (texture) =>
-        new THREE.MeshPhysicalMaterial({
-          map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
-        })
-    );
-  }, []);
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2> My AI Engineering Stack</h2>
 
       <Canvas
         shadows
@@ -187,17 +219,14 @@ const TechStack = () => {
           shadow-mapSize={[512, 512]}
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
+        
         <Physics gravity={[0, 0, 0]}>
           <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
-              isActive={isActive}
-            />
-          ))}
+          <Suspense fallback={null}>
+            <TechSpheres isActive={isActive} />
+          </Suspense>
         </Physics>
+        
         <Environment
           files="/models/char_enviorment.hdr"
           environmentIntensity={0.5}
