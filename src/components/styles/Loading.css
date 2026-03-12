@@ -3,7 +3,7 @@
   width: 100vw;
   height: var(--vh);
   /* background-image: linear-gradient(#cbb1ff, #d8c4ff); */
-  background-color: #eae5ec;
+  background-color: #0b080c; /* Dark mode background */
   z-index: 999999999;
   display: flex;
   place-items: center;
@@ -12,7 +12,8 @@
 .loading-button {
   padding: 20px 50px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: #eae5ec; /* Light button */
+  color: #0b080c; /* Dark text */
   overflow: hidden;
   font-size: 18px;
   font-weight: 500;
@@ -48,11 +49,11 @@
   min-width: 0px;
   min-height: 0px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: #eae5ec; /* Light wrap */
   overflow: hidden;
   transition: 0.8s ease-in-out;
   transition-delay: 0.2s;
-  box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +93,7 @@
 }
 .loading-content {
   position: relative;
-  background-color: #000;
+  background-color: #eae5ec; /* Light content */
   width: 100%;
   overflow: hidden;
   transition: 0.6s;
@@ -137,7 +138,7 @@
   transform: translate(100%, -50%);
   width: 15px;
   height: 25px;
-  background-color: white;
+  background-color: #0b080c; /* Dark cursor */
   animation: blink 1s linear infinite;
 }
 .loading-icon {
@@ -191,7 +192,7 @@
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  color: var(--backgroundColor);
+  color: #eae5ec; /* Light text */
 }
 .loader-title {
   font-weight: 700;
@@ -257,7 +258,7 @@
   position: relative;
   width: 10px;
   height: 60px;
-  background-color: #000;
+  background-color: #eae5ec; /* Light lines */
   display: block;
 }
 .loaderGame-line:nth-child(2n) {
@@ -283,7 +284,7 @@
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  color: var(--backgroundColor);
+  color: #1a1525; /* Very subtle dark text for contrast against pure black */
   font-size: 60px;
   font-weight: 600;
   text-transform: uppercase;
@@ -296,7 +297,7 @@
   content: "";
   width: 20px;
   height: 20px;
-  background-color: var(--backgroundColor);
+  background-color: #1a1525; /* Subtle dark dot */
   position: absolute;
   top: 50%;
   border-radius: 50px;
