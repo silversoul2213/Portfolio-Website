@@ -1,0 +1,24 @@
+--- src/components/styles/About.css
++++ src/components/styles/About.css
+@@ -51,8 +51,19 @@
+   cursor: default;
+ }
+ 
+-/* Apply gradient clipping to both the highlight container and any nested words */
+-.text-highlight, .text-highlight .word {
++/* Fallback for before SplitType is applied */
++.text-highlight:not(:has(.word)) {
++  background: linear-gradient(120deg, #aa42ff, #4568dc);
++  background-size: 200% 200%;
++  -webkit-background-clip: text;
++  background-clip: text;
++  -webkit-text-fill-color: transparent;
++  color: transparent;
++  animation: gradient-shift 5s ease infinite;
++}
++
++/* Apply gradient clipping ONLY to nested words once SplitType makes them inline-block */
++.text-highlight .word {
+   background: linear-gradient(120deg, #aa42ff, #4568dc);
+   background-size: 200% 200%;
+   -webkit-background-clip: text;

@@ -230,20 +230,26 @@
   }
   .career-info-in {
     gap: 0px;
+    width: 100%;
+    flex-direction: column;
   }
   .career-info h3 {
     font-size: 33px;
+    margin-top: 10px;
   }
   .career-info-in,
   .career-description {
     padding-left: 5%;
+    width: 100%;
   }
   .career-section {
     padding-top: 90px;
     margin-top: -70px;
-
     align-items: start;
     place-items: inherit;
     justify-content: left;
+  }
+  .career-timeline {
+    display: none;
   }
 }

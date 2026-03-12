@@ -50,7 +50,7 @@ const Career = () => {
                 <h4>Undergraduate Researcher</h4>
                 <h5>IIT Roorkee</h5>
               </div>
-              <h3>2025</h3>
+              <h3>2026</h3>
             </div>
             <div className="career-description">
               <ul>

@@ -61,6 +61,8 @@ const projects = [
 
 const Work = () => {
   useGSAP(() => {
+    if (window.innerWidth <= 1024) return; // Disable GSAP scroll pin on mobile
+
     let translateX: number = 0;
 
     function setTranslateX() {
