@@ -62,7 +62,14 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
+          <div className="sa-logo">
+            <span className="sa-bracket left-bracket">{"{"}</span>
+            <span className="sa-text">
+              S<span className="sa-text-a">A</span>
+              <span className="sa-dot">.</span>
+            </span>
+            <span className="sa-bracket right-bracket">{"}"}</span>
+          </div>
         </a>
         <a
           href="mailto:somilstudy001@gmail.com"
