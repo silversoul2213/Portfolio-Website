@@ -200,7 +200,15 @@ const TechStack = () => {
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <div className="techstack-header">
+        <div className="about-badge">
+          <div className="badge-dot"></div>
+          <h3 className="title">Capabilities</h3>
+        </div>
+        <h2>
+          My <span>Techstack</span>
+        </h2>
+      </div>
 
       <Canvas
         shadows
