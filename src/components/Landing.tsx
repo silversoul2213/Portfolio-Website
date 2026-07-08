@@ -27,28 +27,51 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
 
           {/* Mobile-only hero centerpiece (replaces the desktop 3D character) */}
-          <div className="landing-mobile" aria-hidden="true">
-            <div className="landing-mobile-halo"></div>
-            <div className="landing-card">
-              <div className="landing-card-sheen"></div>
-              <div className="landing-card-head">
-                <div className="landing-card-avatar">SA</div>
-                <div className="landing-card-idbox">
-                  <span className="landing-card-name">Somil Agrawal</span>
-                  <span className="landing-card-role">
-                    AI Developer · Researcher
-                  </span>
+          <div className="hero-dossier" aria-hidden="true">
+            <div className="dossier-aura"></div>
+            <div className="dossier-panel">
+              <span className="dossier-tick tick-tl"></span>
+              <span className="dossier-tick tick-tr"></span>
+              <span className="dossier-tick tick-bl"></span>
+              <span className="dossier-tick tick-br"></span>
+              <div className="dossier-scan"></div>
+
+              <div className="dossier-top">
+                <span className="dossier-kicker">PROFILE</span>
+                <span className="dossier-state">
+                  <i className="dossier-blip"></i>AVAILABLE
+                </span>
+              </div>
+
+              <div className="dossier-id">
+                <h3 className="dossier-name">Somil Agrawal</h3>
+                <p className="dossier-role">
+                  AI Developer <span>/</span> Researcher
+                </p>
+              </div>
+
+              <div className="dossier-specs">
+                <div className="dossier-row">
+                  <span className="dossier-key">FOCUS</span>
+                  <span className="dossier-val">LLMs · Fine-tuning · MLOps</span>
+                </div>
+                <div className="dossier-row">
+                  <span className="dossier-key">STACK</span>
+                  <span className="dossier-val">PyTorch / FastAPI / Redis</span>
                 </div>
               </div>
-              <div className="landing-card-status">
-                <span className="landing-card-dot"></span>
-                Open to work
-              </div>
-              <div className="landing-card-tags">
-                <span>PyTorch</span>
-                <span>FastAPI</span>
-                <span>LLMs</span>
-                <span>MLOps</span>
+
+              <div className="dossier-signal">
+                <div className="dossier-eq">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <span className="dossier-serial">NO. 2213</span>
               </div>
             </div>
           </div>
