@@ -111,13 +111,18 @@
   color: var(--accentColor, #fff);
   font-weight: 500;
 }
+.work-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
 .work-live {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  align-self: flex-start;
   width: fit-content;
-  margin-top: 22px;
   padding: 9px 18px;
   font-size: 14px;
   letter-spacing: 0.5px;
@@ -135,8 +140,17 @@
   font-size: 17px;
   transition: 0.3s;
 }
-.work-live:hover svg {
+.work-live:not(.work-repo):hover svg {
   transform: translate(2px, -2px);
+}
+.work-repo {
+  color: #e6e0ee;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.work-repo:hover {
+  color: var(--backgroundColor);
+  background-color: #ece7f2;
+  border-color: #ece7f2;
 }
 .work-image {
   display: flex;

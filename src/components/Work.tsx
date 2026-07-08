@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MdArrowOutward } from "react-icons/md";
+import { FaGithub } from "react-icons/fa6";
 
 gsap.registerPlugin(useGSAP);
 
@@ -10,6 +11,7 @@ type Project = {
   name: string;
   category: string;
   link?: string;
+  repo?: string;
   description: JSX.Element;
 };
 
@@ -35,6 +37,8 @@ const projects: Project[] = [
   {
     name: "F1 Race Strategy Simulator",
     category: "Sept 2025 – Oct 2025",
+    link: "https://pitstop-strategy-web.vercel.app",
+    repo: "https://github.com/silversoul2213/pitstop_strategy_predictor",
     description: (
       <ul className="project-features">
         <li>
@@ -148,17 +152,33 @@ const Work = () => {
                 </div>
                 <h4>Description</h4>
                 <div className="work-description">{project.description}</div>
-                {project.link && (
-                  <a
-                    className="work-live"
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="disable"
-                  >
-                    View live
-                    <MdArrowOutward />
-                  </a>
+                {(project.link || project.repo) && (
+                  <div className="work-links">
+                    {project.link && (
+                      <a
+                        className="work-live"
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="disable"
+                      >
+                        View live
+                        <MdArrowOutward />
+                      </a>
+                    )}
+                    {project.repo && (
+                      <a
+                        className="work-live work-repo"
+                        href={project.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="disable"
+                      >
+                        <FaGithub />
+                        Source
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
