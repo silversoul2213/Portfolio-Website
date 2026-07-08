@@ -68,6 +68,20 @@
   margin: 10px 0px;
   color: var(--accentColor);
 }
+.career-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--accentColor);
+  transition: 0.25s;
+}
+.career-link:hover {
+  opacity: 0.7;
+  color: var(--accentColor);
+}
+.career-link svg {
+  font-size: 0.8em;
+}
 
 .career-description {
   width: 40%;

@@ -2,10 +2,36 @@ import "./styles/Work.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { MdArrowOutward } from "react-icons/md";
 
 gsap.registerPlugin(useGSAP);
 
-const projects = [
+type Project = {
+  name: string;
+  category: string;
+  link?: string;
+  description: JSX.Element;
+};
+
+const projects: Project[] = [
+  {
+    name: "Mynor AI — Meeting Intelligence Backend",
+    category: "Helloagentic · Production",
+    link: "https://mynor.ai",
+    description: (
+      <ul className="project-features">
+        <li>
+          Architected a real-time meeting-intelligence backend in <strong>FastAPI</strong> / <strong>asyncio</strong> that turns diarized call transcripts into structured commitments, decisions, and tasks inside multi-tenant <strong>Postgres</strong> with Row-Level Security.
+        </li>
+        <li>
+          Built a hybrid-retrieval <strong>RAG</strong> pipeline — 1024-dim embeddings + Postgres full-text search fused via <strong>Reciprocal Rank Fusion</strong>, then a cross-encoder reranker with a keyword fallback — so a reranker timeout degrades answer quality instead of failing the query.
+        </li>
+        <li>
+          Cut warm chat median latency <strong>~59% (2.7s → 1.1s)</strong> via an in-process auth cache and a merged <strong>Redis</strong> round-trip, and designed a 5-stage <strong>LLM</strong> extraction pipeline (<strong>NVIDIA NIM</strong>, Nemotron-49B) with confidence-band routing that refuses to guess rather than hallucinate.
+        </li>
+      </ul>
+    ),
+  },
   {
     name: "F1 Race Strategy Simulator",
     category: "Sept 2025 – Oct 2025",
@@ -122,6 +148,18 @@ const Work = () => {
                 </div>
                 <h4>Description</h4>
                 <div className="work-description">{project.description}</div>
+                {project.link && (
+                  <a
+                    className="work-live"
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="disable"
+                  >
+                    View live
+                    <MdArrowOutward />
+                  </a>
+                )}
               </div>
             </div>
           ))}

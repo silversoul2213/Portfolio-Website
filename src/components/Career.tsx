@@ -1,4 +1,5 @@
 import "./styles/Career.css";
+import { MdArrowOutward } from "react-icons/md";
 
 const Career = () => {
   return (
@@ -16,7 +17,18 @@ const Career = () => {
             <div className="career-info-in">
               <div className="career-role">
                 <h4>AI Backend Platform Engineer</h4>
-                <h5>DigiDzn LLC</h5>
+                <h5>
+                  <a
+                    className="career-link"
+                    href="https://www.helloagentic.ai"
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="disable"
+                  >
+                    Helloagentic
+                    <MdArrowOutward />
+                  </a>
+                </h5>
               </div>
               <h3>NOW</h3>
             </div>
